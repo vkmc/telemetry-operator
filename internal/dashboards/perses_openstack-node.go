@@ -105,7 +105,7 @@ const openstackNodeJSON = `{
                 },
                 "yAxis": {
                   "format": {
-                    "unit": "percent-decimal"
+                    "unit": "decimal"
                   }
                 }
               }
@@ -329,7 +329,7 @@ const openstackNodeJSON = `{
           "kind": "Panel",
           "spec": {
             "display": {
-              "name": "Disk IO Saturation"
+              "name": "Disk IO Saturation (Queue Time)"
             },
             "plugin": {
               "kind": "TimeSeriesChart",
@@ -339,7 +339,7 @@ const openstackNodeJSON = `{
                 },
                 "yAxis": {
                   "format": {
-                    "unit": "percent-decimal"
+                    "unit": "seconds"
                   }
                 }
               }
