@@ -39,9 +39,6 @@ const openstackVmJSON = `{
             "display": {
               "hidden": false
             },
-            "defaultValue": [
-              "admin"
-            ],
             "allowAllValue": true,
             "allowMultiple": true,
             "customAllValue": ".*",
@@ -64,9 +61,6 @@ const openstackVmJSON = `{
             "display": {
               "hidden": false
             },
-            "defaultValue": [
-              "d2a5f62671fcb969312fab2fef4bbfea78847225bb4686dc16d4f6dd"
-            ],
             "allowAllValue": false,
             "allowMultiple": true,
             "sort": "none",

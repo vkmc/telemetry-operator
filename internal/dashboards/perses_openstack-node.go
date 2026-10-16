@@ -39,7 +39,6 @@ const openstackNodeJSON = `{
             "display": {
               "hidden": false
             },
-            "defaultValue": ".*",
             "allowAllValue": true,
             "allowMultiple": true,
             "sort": "alphabetical-asc",
@@ -258,7 +257,7 @@ const openstackNodeJSON = `{
                 },
                 "yAxis": {
                   "format": {
-                    "unit": "bytes/sec"
+                    "unit": "packets/sec"
                   }
                 }
               }
