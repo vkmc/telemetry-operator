@@ -24,7 +24,6 @@ const openstackCeilometerIpmiJSON = `{
   "apiVersion": "perses.dev/v1alpha2",
   "kind": "PersesDashboard",
   "metadata": {
-    "namespace": "openstack",
     "name": "openstack-ceilometer-ipmi"
   },
   "spec": {
@@ -45,13 +44,13 @@ const openstackCeilometerIpmiJSON = `{
             "plugin": {
               "kind": "PrometheusLabelValuesVariable",
               "spec": {
-                "labelName": "node",
+                "labelName": "fqdn",
                 "matchers": [
-                  "label_replace(ceilometer_hardware_ipmi_voltage, \"node\", \"$1\", \"resource\", \"^(.*)-voltage.*\")"
+                  "ceilometer_hardware_ipmi_voltage"
                 ]
               }
             },
-            "name": "compute"
+            "name": "fqdn"
           }
         }
       ],
@@ -82,7 +81,7 @@ const openstackCeilometerIpmiJSON = `{
                   "plugin": {
                     "kind": "PrometheusTimeSeriesQuery",
                     "spec": {
-                      "query": "label_replace(ceilometer_hardware_ipmi_voltage{unit=\"V\", resource=~\"$compute.*\"}, \"resource_name\", \"$1\", \"resource\", \".*-(.*)\")",
+                      "query": "label_replace(ceilometer_hardware_ipmi_voltage{unit=\"V\", resource=~\"$fqdn.*\"}, \"resource_name\", \"$1\", \"resource\", \".*-(.*)\")",
                       "seriesNameFormat": "{{ resource_name }}"
                     }
                   }
@@ -117,7 +116,7 @@ const openstackCeilometerIpmiJSON = `{
                   "plugin": {
                     "kind": "PrometheusTimeSeriesQuery",
                     "spec": {
-                      "query": "label_replace(ceilometer_hardware_ipmi_current{unit=\"Amps\", resource=~\"$compute.*\"}, \"resource_name\", \"$1\", \"resource\", \".*-(current.*)\")",
+                      "query": "label_replace(ceilometer_hardware_ipmi_current{unit=\"Amps\", resource=~\"$fqdn.*\"}, \"resource_name\", \"$1\", \"resource\", \".*-(current.*)\")",
                       "seriesNameFormat": "{{ resource_name }}"
                     }
                   }
@@ -152,7 +151,7 @@ const openstackCeilometerIpmiJSON = `{
                   "plugin": {
                     "kind": "PrometheusTimeSeriesQuery",
                     "spec": {
-                      "query": "label_replace(ceilometer_hardware_ipmi_current{unit=\"W\", resource=~\"$compute.*\"}, \"resource_name\", \"$1\", \"resource\", \".*-(pwr.*)\")",
+                      "query": "label_replace(ceilometer_hardware_ipmi_current{unit=\"W\", resource=~\"$fqdn.*\"}, \"resource_name\", \"$1\", \"resource\", \".*-(pwr.*)\")",
                       "seriesNameFormat": "{{ resource_name }}"
                     }
                   }
@@ -187,7 +186,7 @@ const openstackCeilometerIpmiJSON = `{
                   "plugin": {
                     "kind": "PrometheusTimeSeriesQuery",
                     "spec": {
-                      "query": "label_replace(ceilometer_hardware_ipmi_fan{unit=\"RPM\", resource=~\"$compute.*\"}, \"resource_name\", \"$1\", \"resource\", \".*-(fan.*)\")",
+                      "query": "label_replace(ceilometer_hardware_ipmi_fan{unit=\"RPM\", resource=~\"$fqdn.*\"}, \"resource_name\", \"$1\", \"resource\", \".*-(fan.*)\")",
                       "seriesNameFormat": "{{ resource_name }}"
                     }
                   }
@@ -222,7 +221,7 @@ const openstackCeilometerIpmiJSON = `{
                   "plugin": {
                     "kind": "PrometheusTimeSeriesQuery",
                     "spec": {
-                      "query": "label_replace(ceilometer_hardware_ipmi_temperature{unit=\"C\", resource=~\"$compute.*\"}, \"resource_name\", \"$2\", \"resource\", \"^(.*)\\\\-(exhaust_temp_.*|inlet_temp_.*|temp_.*)$\")",
+                      "query": "label_replace(ceilometer_hardware_ipmi_temperature{unit=\"C\", resource=~\"$fqdn.*\"}, \"resource_name\", \"$2\", \"resource\", \"^(.*)\\\\-(exhaust_temp_.*|inlet_temp_.*|temp_.*)$\")",
                       "seriesNameFormat": "{{ resource_name }}"
                     }
                   }
